@@ -34,11 +34,14 @@ class TestLogin:
         self.driver.find_element(By.ID, 'com.ajaxsystems:id/next').click()
         time.sleep(7)
         try:
-            assert "com.ajaxsystems:id/loading" in self.driver.page_source
+            if email == 'qa.ajax.app.automation@gmail.com':
+                assert "com.ajaxsystems:id/loading" in self.driver.page_source
+            else:
+                assert "com.ajaxsystems:id/loading" not in self.driver.page_source
         except Exception as ex:
-            logger.error("Given wrong credentials")
+            logger.error("Something went wrong")
             raise ex
         else:
-            logger.info("Authorization was successful")
+            logger.info("The app works correctly")
         finally:
             self.driver.quit()
