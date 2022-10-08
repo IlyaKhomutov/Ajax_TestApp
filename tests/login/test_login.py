@@ -42,6 +42,6 @@ class TestLogin:
             logger.error("Something went wrong")
             raise ex
         else:
-            logger.info("The app works correctly")
+            logger.info(f"The app works correctly with email {email}")
         finally:
             self.driver.quit()
